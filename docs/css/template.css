@@ -1,0 +1,68 @@
+/* make flexbox */
+:root {
+    --main-white-color: #f2f2f2;
+    --main-black-color: black;
+    --main-purple-color: #9e89b8;
+  }
+
+  body{
+    background-color: var(--main-purple-color);
+    color: var(--main-purple-color);
+
+    font-family: 'Roboto', sans-serif;
+
+    font-size: xx-large;
+
+    padding: 0%;
+    margin: 0%;
+  }
+
+#container{
+    display: flex;
+    flex-direction: column;
+
+    align-content: space-between;
+    flex-grow: 1;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+#top{
+    background-color: var(--main-white-color);
+
+    flex: 0.1;
+    width: 100%;
+}
+
+#content{
+    background-color: var(--main-black-color);
+
+    flex: auto;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+table{
+    border: 2px dotted black;
+}
+
+td{
+    border: 1px dotted green;
+}
