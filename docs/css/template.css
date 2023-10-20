@@ -61,7 +61,7 @@ body {
 
 /* ------------ */
 /* top bar */
-a {
+a[title~="link"] {
     text-decoration: none;
     color: inherit;
 
@@ -78,7 +78,7 @@ a {
     
 }
 
-a:hover{
+a[title~="link"]:hover{
     background-color: var(--grey-color);
 
     transform:scale(1.2);
