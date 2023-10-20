@@ -121,6 +121,8 @@ a:hover{
     width: 15vh;
     height: 15vh;
 
+    display: block;
+
     position: absolute;
 }
 
