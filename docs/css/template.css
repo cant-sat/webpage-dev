@@ -65,6 +65,8 @@ a {
     text-decoration: none;
     color: inherit;
 
+    display: inline-block;
+
     transition: all 0.3s;
 
     padding-right: 10px;
@@ -72,6 +74,8 @@ a {
     border-radius: 10px;
 
     transform: scale(1);
+
+    
 }
 
 a:hover{
@@ -82,7 +86,7 @@ a:hover{
     color: var(--red-color);
 }
 
-#contact, #logo{
+#logo{
     
     height: 100%;
 
@@ -90,11 +94,21 @@ a:hover{
 
     flex: 1;
 }
+
+#contact{
+    height: 100%;
+
+    text-align: center;
+
+    flex: 0.7;
+}
+
+
 #otherPages {
     height: 100%;
 
     text-align: center;
-    flex: 3;
+    flex: 4;
 }
 
 #logo {
@@ -110,7 +124,11 @@ a:hover{
     position: absolute;
 }
 
+#githubLogo{
+    transform: scale(0.5) translateY(-60%) translateX(-25%);
+    position: absolute;
 
+}
 
 
 
