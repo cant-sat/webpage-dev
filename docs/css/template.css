@@ -98,25 +98,16 @@ a:hover{
 }
 
 #logo {
-    /* background-image: url("/images/logo.png");
+    background-image: url("/images/logo.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: contain; */
+    background-size:contain;
 
-    background-color: #1d1d1d;
+    width: 15vh;
+    height: 15vh;
 
-    
-}
-
-#logo2 {
     position: absolute;
-
-    top: -0.5%;
-    left: 0%;
-    margin: 0%;
-    padding: 0%;
-
 }
 
 
