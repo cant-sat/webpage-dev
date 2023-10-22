@@ -44,7 +44,7 @@ body {
 
     overflow: hidden;
 
-    margin: 0%;
+    margin: 5px;
     padding: 0%;
 }
 
@@ -56,6 +56,7 @@ body {
     max-height: calc(100vh - 12vh);
 
     overflow: scroll;
+
 }
 
 /* ------------ */
@@ -132,7 +133,9 @@ a[title~="link"]:hover{
     transform: translateY(30%);
 }
 
+/* end of top bar */
 
 
-
-
+#content-placeholder {
+    margin: 5px 10px;
+}

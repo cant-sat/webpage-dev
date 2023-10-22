@@ -10,6 +10,6 @@ fetch('template.html')
         fetch(window.location.pathname)
             .then(response => response.text())
             .then(contentData => {
-                document.getElementById('content').innerHTML = contentData;
+                document.getElementById('content-placeholder').innerHTML = contentData;
             });
     });
