@@ -1,0 +1,17 @@
+:root {
+    --black-color: #1d1d1d;
+    --red-color: #A30900;
+    --grey-color: #8A8A8A;
+    --white-color: #E2E2E2;
+   --blue-color: #256A6F;
+}
+
+#introductions{
+    overflow: auto;
+}
+
+.card {
+    background-color: var(--grey-color);
+
+    position: relative;
+}
