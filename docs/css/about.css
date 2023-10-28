@@ -6,12 +6,35 @@
    --blue-color: #256A6F;
 }
 
-#introductions{
-    overflow: auto;
+.card-container{
+    display: flex;
+    height: 40vh;
+    flex-wrap:wrap;
+    justify-content: space-between;
 }
 
-.card {
-    background-color: var(--grey-color);
-
-    position: relative;
+.card{
+    flex-basis: calc(25% - 3vh); 
+    margin: 1vh;
+    background-color: #A30900;
 }
+  
+@media (max-width: 768px) {
+    .card {
+      flex-basis: calc(50% - 3vh); /* Two cards per row on smaller screens */
+    }
+
+    .card-container{
+        height: 80vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex-basis: calc(100% - 3vh); /* One card per row on even smaller screens */
+    }
+
+    .card-container{
+        height: 160vh;
+    }
+  }
