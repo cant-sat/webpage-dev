@@ -90,14 +90,6 @@ a[title~="link"]:hover{
     color: var(--red-color);
 }
 
-#contact{
-    height: 100%;
-
-    text-align: center;
-
-    flex: 0.7;
-    
-}
 
 
 #otherPages {
@@ -127,10 +119,28 @@ a[title~="link"]:hover{
 
 }
 
-#githubLogo{
-    transform: scale(0.6) translateY(-50%) translateX(-150%);
-    position: absolute;
 
+
+#githubLogo{
+
+    height: 100%;
+
+    flex: 1;
+
+    background-image: url("/images/github-mark.svg");
+    background-repeat: no-repeat;
+    background-size: 9vh;
+    background-position: 30% 55%;
+
+    width: 15vh;
+    height: 15vh;
+
+    display: block;
+    transition: all 0.3s;
+}
+#githubLogo:hover{
+    background-size: 11vh;
+    
 }
 
 #otherPages, #contact{
