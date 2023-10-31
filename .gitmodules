@@ -1,5 +1,4 @@
 [submodule "cant-sat"]
 	path = cant-sat
 	url = https://github.com/samthedev32/cant-sat
-[submodule "cant-sat/"]
 	branch = main
