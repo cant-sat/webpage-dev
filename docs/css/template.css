@@ -80,8 +80,16 @@ a[title~="link"] {
 
     transform: scale(1);
 
-    font-size: 3.2vh;
+    font-size: 3.5vh;
 }
+
+@media (min-width: 800px) {
+    a[title~="link"] {
+    
+        font-size: 4.2vh;
+        
+    }
+  }
 
 a[title~="link"]:hover{
     background-color: var(--grey-color);
@@ -97,7 +105,7 @@ a[title~="link"]:hover{
     height: 100%;
 
     text-align: center;
-    flex: 2.7 1vh;
+    flex: 2.8 1vh;
     display: block;
 
     display: flex;
