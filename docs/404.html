@@ -1,0 +1,22 @@
+<body>
+    <style>
+        #image{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <audio src="sounds/scream.mp3" id="scream"></audio>
+
+    <img src="images/404.jpeg" height="70%" id="image" onclick="pressed()">
+</body>
+
+<script src="load.js"></script>
+
+<script> 
+    function pressed(){
+        document.getElementById("scream").play()
+    }
+</script>
