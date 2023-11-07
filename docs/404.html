@@ -2,13 +2,18 @@
     <style>
         #image{
             position: absolute;
-            top: 50%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
+
+            border-radius: 10px;
+        }
+        #image:hover{
+            cursor: pointer;
         }
     </style>
 
-    <audio src="sounds/scream.mp3" id="scream"></audio>
+    <audio src="sounds/scream.mp3" id="scream" ></audio>
 
     <img src="images/404.jpeg" height="70%" id="image" onclick="pressed()">
 </body>
