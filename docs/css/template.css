@@ -58,7 +58,7 @@ body {
 
     flex: 1;
     width: 100%;
-    max-height: calc(100vh - 12vh);
+    max-height: calc(100vh - 15vh);
 
     overflow: scroll;
 

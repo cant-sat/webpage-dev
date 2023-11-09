@@ -13,12 +13,31 @@
     justify-content: space-between;
 }
 
+.card-content{
+  /* margin between content and side*/
+  display: block;
+  margin: 10px;
+  height: calc(100% - (10px) * 2);
+}
+
 .card{
     flex-basis: calc(25% - 3vh); 
     margin: 1vh;
-    background-color: #A30900;
+    background-color: var(--red-color);
     aspect-ratio: 2/3;
+
+    color: var(--white-color);
+
+    border-radius: 1.5vh;
+
+    transition: all 0.5s;
 }
+
+.card-container:hover > *:not(:hover) {
+  transform: scale(0.96);
+  filter: blur(10px);
+}
+
   
 @media (max-width: 768px) {
     .card {
