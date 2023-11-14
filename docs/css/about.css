@@ -18,6 +18,7 @@
   display: block;
   margin: 10px;
   height: calc(100% - (10px) * 2);
+  font-size: 100%;
 }
 
 .card{

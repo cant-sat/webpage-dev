@@ -60,13 +60,15 @@ body {
     width: 100%;
     max-height: calc(100vh - 15vh);
 
-    overflow: scroll;
+    overflow-y: auto;
+
+    overflow-x: hidden;
 
 }
 
 /* ------------ */
 /* top bar */
-a[title~="link"] {
+#otherPages > a{
     text-decoration: none;
     color: inherit;
 
@@ -80,18 +82,18 @@ a[title~="link"] {
 
     transform: scale(1);
 
-    font-size: 3.5vh;
+    font-size: 4.2vh;
 }
 
-@media (min-width: 800px) {
-    a[title~="link"] {
+/* @media (min-width: 800px) {
+    #otherPages > a {
     
         font-size: 4.2vh;
         
     }
-  }
+  } */
 
-a[title~="link"]:hover{
+  #otherPages > a:hover{
     background-color: var(--grey-color);
 
     transform:scale(1.2);
@@ -168,4 +170,5 @@ a[title~="link"]:hover{
 
 #content-placeholder {
     margin: 5px 10px;
+    overflow-y: hidden;
 }
