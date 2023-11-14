@@ -51,3 +51,27 @@
       flex-basis: calc(100% - 3vh); /* One card per row on even smaller screens */
     }
   }
+
+  .flip{
+    flex-basis: calc(50% - 50vh); 
+    margin: 10vh;
+    background-color: var(--red-color);
+    aspect-ratio: 3/3;
+
+    color: var(--white-color);
+
+    border-radius: 1.5vh;
+
+    transition: all 0.5s;
+  }
+
+  .flip-container{
+    display: flex;
+    height: auto;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+
+  .flip:hover{
+    
+  }
