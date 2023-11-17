@@ -6,6 +6,8 @@
    --blue-color: #256A6F;
 }
 
+/* tagok kártyái*/
+
 .card-container{
     display: flex;
     height: auto;
@@ -47,31 +49,53 @@
   }
   
   @media (max-width: 480px) {
+    h#mentor{
+      font-size: 180%;
+    }
+
     .card {
       flex-basis: calc(100% - 3vh); /* One card per row on even smaller screens */
     }
   }
 
-  .flip{
-    flex-basis: calc(50% - 50vh); 
-    margin: 10vh;
-    background-color: var(--red-color);
-    aspect-ratio: 3/3;
+/* mentorok kártyái*/
+.flip-container {
+  display: flex;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    color: var(--white-color);
+  margin: 0;
+}
 
-    border-radius: 1.5vh;
+.flip {
+  display: block;
 
-    transition: all 0.5s;
-  }
+  flex-basis: 50vh;
+  height: 50vh;
+  width: 200px;
+  margin: 10vh;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  border-radius: 1.5vh;
+  transition: all 0.5s;
 
-  .flip-container{
-    display: flex;
-    height: auto;
-    flex-wrap:wrap;
-    justify-content: center;
-  }
 
-  .flip:hover{
-    
-  }
+  text-align: center;
+}
+
+.flip-content {
+  margin: 10px;
+  font-size: 130%;
+  margin-top: 50%;
+
+  background-color: pink;
+}
+
+h{
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 25px 0;
+  font-size: 220%;
+}
