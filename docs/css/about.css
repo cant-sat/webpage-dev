@@ -85,11 +85,15 @@
 }
 
 .flip-content {
+  display: flex;
   margin: 10px;
   font-size: 130%;
-  margin-top: 50%;
+  align-items: center;
+  height: calc(100% - 20px);
+}
 
-  background-color: pink;
+.name{
+  flex: 1;
 }
 
 h{
