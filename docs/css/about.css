@@ -82,8 +82,8 @@
   display: block;
 
   flex-basis: 50vh;
+  min-width: 40vh;
   height: 50vh;
-  width: 200px;
   margin: 10vh;
   background-color: var(--red-color);
   color: var(--white-color);
