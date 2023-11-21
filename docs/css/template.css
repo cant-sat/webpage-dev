@@ -55,6 +55,8 @@ body {
 
 #content {
     background-color: var(--black-color);
+    background-image: url("/images/wavey-fingerprint.svg");
+
 
     flex: 1;
     width: 100%;
