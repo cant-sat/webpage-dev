@@ -88,22 +88,31 @@
   background-color: var(--red-color);
   color: var(--white-color);
   border-radius: 1.5vh;
-  transition: all 0.5s;
-
+  transition: all ease-in-out 0.2s;
 
   text-align: center;
 }
 
 .flip-content {
-  display: flex;
   margin: 10px;
   font-size: 130%;
-  align-items: center;
   height: calc(100% - 20px);
+
+  transition: all 0.5s;
 }
 
 .name{
-  flex: 1;
+  transition: all cubic-bezier(1,0,1,1)0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - 20px);
+
+  width: 100%;
+
+  overflow: visible;
 }
 
 h{
@@ -112,4 +121,44 @@ h{
   width: 100%;
   margin: 25px 0;
   font-size: 220%;
+
+  
+}
+
+.description{
+  height: 0%;
+  font-size: 0px;
+  opacity: 0px;
+  transform: scale(0) translateY(-200%);
+
+  overflow: visible;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all cubic-bezier(0,0,0,1) 0.5s;
+
+  width: 100%;
+
+}
+
+.flip:hover .name{
+  opacity: 0;
+  height: 0%;
+  font-size: 0px;
+
+  transform: scale(0) translateY(-200%);
+}
+
+.flip:hover .description{
+  opacity: 1;
+  font-size: 150%;
+  height: calc(100% - 20px);
+
+  transform: scale(1) translateY(0);
+}
+
+.flip:hover{
+  transform: scale(1.1);
 }
