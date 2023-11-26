@@ -35,9 +35,8 @@
     var currentGraphs = []
 
     function connect() {
-        graph = new Chart(document.getElementById("graph"), config)
-
         currentGraphs = []
+        updateGraph()
         tables = new Map()
         // disables the connect buttons
         document.getElementById("url").disabled = true
@@ -63,27 +62,33 @@
 
             var newEntrie = JSON.parse(event.data)
 
+            // you cant have an empty or not 
             if(typeof newEntrie.table != typeof "string" || newEntrie.table == undefined || newEntrie.table == null){
                 throw "error: table name error"
             }
 
+            //if it is currently sending the already existing tables
             if (newEntrie.value == undefined && newEntrie.values != null && newEntrie.values != undefined) {
                 if(typeof newEntrie.values[0] != typeof 1){
                     throw "error: only number tables are accepted"
                 }
                 console.log("created table " + newEntrie.table)
                 tables.set(newEntrie.table, newEntrie.values)
-            } else if (newEntrie.value != undefined && newEntrie.value != null && newEntrie.values == undefined) {
+            } 
+            // if the thing being sent is real life data
+            else if (newEntrie.value != undefined && newEntrie.value != null && newEntrie.values == undefined) {
                 if(typeof newEntrie.value != typeof 1){
                     throw "error: only numbers are accepted"
                     return
                 }
                 
                 if(tables.has(newEntrie.table)){
+                    // adds the new entrie to the table if it exists
                     console.log("added entrie to table: " + newEntrie.table)
                     tables.get(newEntrie.table).push(newEntrie.value)
                 }
                 else{
+                    // creates the table if it exists
                     console.log("created new table: " + newEntrie.table)
                     tables.set(newEntrie.table, [newEntrie.value])
                 }
@@ -109,11 +114,15 @@
         const visualize = tables.get(tableName)
         if (visualize != undefined && visualize != null && typeof visualize == typeof []) {
 
+            // if they try to show the same table values twice throws error
             if(currentGraphs.includes(tableName)){
                 throw "error: cant visualize same graph twice"
             }
+
+            // adds the new table to visualize to the current graphs
             currentGraphs.push(tableName)
 
+            //updates the graphs
             updateGraph()
         }
         else  {
@@ -122,15 +131,19 @@
     }
 
     function updateGraph(){
-        if (currentGraphs.length == 0) {return}
-        else{
-            var longest = -1
+        // if there are no current graphs just return
+        
+            var longest = 0
 
             newData = []
 
+            // loops through all the graph names it wants to visualize
             currentGraphs.forEach(element => {
                 console.log(element)
+                // adds the datas from the table that has the name with element to the new data
                 newData.push({label: element, data: tables.get(element), tension : 0, borderColor: "rgb(255, 0, 255)", fill: true})
+
+                // finds the longest values
                 if(tables.get(element).length > longest){
                     longest = tables.get(element).length
                 }
@@ -142,11 +155,13 @@
             console.log(res)
 
             data.labels = res
-        }
+        
 
+        //updates the graph with no animation
         graph.update("none")
     }
 
+    //makes the labels for a size of "size"
     function makeLabels(size){
         ret = []
         for (let index = 0; index < size; index++) {
