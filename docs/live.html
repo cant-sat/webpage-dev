@@ -21,7 +21,7 @@
 
     var socket = null
 
-    var data = {labels: [], datasets: []}
+    var data = {labels: [0], datasets: []}
     var options = {scales: {
         y: {
             beginAtZero: true
@@ -77,9 +77,11 @@
                 }
                 
                 if(tables.has(newEntrie.table)){
+                    console.log("added entrie to table: " + newEntrie.table)
                     tables.get(newEntrie.table).push(newEntrie.value)
                 }
                 else{
+                    console.log("created new table: " + newEntrie.table)
                     tables.set(newEntrie.table, [newEntrie.value])
                 }
             }
@@ -122,7 +124,7 @@
             newData = []
 
             currentGraphs.forEach(element => {
-                consol
+                console.log(element)
                 newData.push({label: element, data: tables.get(element), tension : 0, borderColor: "rgb(255, 0, 255)", fill: true})
                 if(tables.get(element).length > longest){
                     longest = tables.get(element).length
