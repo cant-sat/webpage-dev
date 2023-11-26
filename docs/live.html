@@ -74,6 +74,7 @@
             } else if (newEntrie.value != undefined && newEntrie.value != null && newEntrie.values == undefined) {
                 if(typeof newEntrie.value != typeof 1){
                     throw "error: only numbers are accepted"
+                    return
                 }
                 
                 if(tables.has(newEntrie.table)){
@@ -84,6 +85,8 @@
                     console.log("created new table: " + newEntrie.table)
                     tables.set(newEntrie.table, [newEntrie.value])
                 }
+
+                updateGraph()
             }
             else{
                 throw "error, bad message"
