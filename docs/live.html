@@ -35,6 +35,8 @@
     var currentGraphs = []
 
     function connect() {
+        graph = new Chart(document.getElementById("graph"), config)
+
         currentGraphs = []
         tables = new Map()
         // disables the connect buttons
