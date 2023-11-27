@@ -141,7 +141,7 @@
             currentGraphs.forEach(element => {
                 console.log(element)
                 // adds the datas from the table that has the name with element to the new data
-                newData.push({label: element, data: tables.get(element), tension : 0, borderColor: "rgb(255, 0, 255)", fill: true})
+                newData.push({label: element, data: tables.get(element), tension : 0, borderColor: "rgb("+Math.floor((Math.random() * 255))+", "+Math.floor((Math.random() * 255))+", "+Math.floor((Math.random() * 255))+")", fill: true})
 
                 // finds the longest values
                 if(tables.get(element).length > longest){
