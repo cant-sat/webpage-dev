@@ -1,0 +1,64 @@
+<div>Websocket test</div>
+
+
+<input type="text" name="Url" id="url" value="ws://localhost:12345">
+<input type="button" onclick="connect()" value="Connect" id="connect">
+<hr>
+<input type="text" name="Message" id="message" value="" disabled="disabled">
+<input type="button" onclick="sendMessage()" value="Send" disabled="disabled" id="send">
+<hr>
+<hr>
+<div id="mess"></div>
+
+<script>
+    var socket = null
+
+    function connect() {
+
+        // disables the first 2 ones
+        document.getElementById("url").disabled = true
+        document.getElementById("connect").disabled = true
+
+        const url = document.getElementById("url").value
+
+        socket = new WebSocket(url)
+
+        socket.addEventListener("close", function (event) {
+            console.log("closed")
+
+            // enables the first 2 ones
+            document.getElementById("url").disabled = false
+            document.getElementById("connect").disabled = false
+
+            // disables the other 2
+            document.getElementById("send").disabled = true
+            document.getElementById("message").disabled = true
+
+            document.getElementById("mess").innerHTML += "<div style='color: red'><hr>disconnected <hr> </div> <hr>"
+        })
+
+        socket.addEventListener("message", function (event) {
+            document.getElementById("mess").innerHTML += event.data.toString()
+            document.getElementById("mess").innerHTML += "<hr>"
+        })
+
+        socket.addEventListener("open", function () {
+            // enables the other 2 if it can join
+            document.getElementById("send").disabled = false
+            document.getElementById("message").disabled = false
+
+            console.log("Succesfully joined")
+        })
+
+    }
+
+    function sendMessage() {
+
+        MessageSend = document.getElementById("message").value
+        console.log(MessageSend)
+        socket.send(MessageSend)
+
+    }
+</script>
+
+<script src="/js/load.js"></script>

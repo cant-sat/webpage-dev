@@ -1,0 +1,20 @@
+h1{
+    display:block; 
+    text-align: center; 
+    font-size: 200%;
+    margin-top: 0;
+
+}
+
+.text {
+    display: grid;
+    grid-template-columns: 80%;
+    -ms-grid-column-align: center;
+    
+}
+.text > * {
+    /* to calc this ((1/x)-1)/2 x is the grid template column if that is 80% x should be 0.8 */
+    transform: translateX(12.5%); 
+
+    text-align: justify;
+}

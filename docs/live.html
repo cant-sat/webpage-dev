@@ -5,11 +5,12 @@
     <br>
 
     <input type="text" id="table" value="temperature" disabled="true">
-    <input type="button" onclick="showTable(document.getElementById('table').value)" value="show" id="show" disabled="true">
+    <input type="button" onclick="showTable(document.getElementById('table').value)" value="show" id="show"
+        disabled="true">
 
     <br>
     <canvas id="graph"></canvas>
-   
+
 </body>
 
 <script src="js/load.js"></script>
@@ -18,25 +19,34 @@
 
 <script>
     var tables = null
+    var colors = null
 
     var socket = null
 
-    var data = {labels: [0], datasets: []}
-    var options = {scales: {
-        y: {
-            beginAtZero: true
+    var data = { labels: [0], datasets: [] }
+    var options = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
-    }}
-    var config = {type: "line",
+    }
+    var config = {
+        type: "line",
         data: data,
-        options : options}
+        options: options
+    }
 
     var graph = new Chart(document.getElementById("graph"), config)
     var currentGraphs = []
+    
 
     function connect() {
+        graph.destroy()
+        graph = new Chart(document.getElementById("graph"), config)
         currentGraphs = []
         updateGraph()
+        colors = new Map()
         tables = new Map()
         // disables the connect buttons
         document.getElementById("url").disabled = true
@@ -62,44 +72,42 @@
 
             var newEntrie = JSON.parse(event.data)
 
-            // you cant have an empty or not 
-            if(typeof newEntrie.table != typeof "string" || newEntrie.table == undefined || newEntrie.table == null){
-                throw "error: table name error"
-            }
-
             //if it is currently sending the already existing tables
-            if (newEntrie.value == undefined && newEntrie.values != null && newEntrie.values != undefined) {
-                if(typeof newEntrie.values[0] != typeof 1){
+            if (newEntrie.entries == undefined && newEntrie.values != null && newEntrie.values != undefined) {
+                if (typeof newEntrie.values[0] != typeof 1) {
                     throw "error: only number tables are accepted"
                 }
                 console.log("created table " + newEntrie.table)
                 tables.set(newEntrie.table, newEntrie.values)
-            } 
+            }
             // if the thing being sent is real life data
-            else if (newEntrie.value != undefined && newEntrie.value != null && newEntrie.values == undefined) {
-                if(typeof newEntrie.value != typeof 1){
-                    throw "error: only numbers are accepted"
-                    return
-                }
-                
-                if(tables.has(newEntrie.table)){
-                    // adds the new entrie to the table if it exists
-                    console.log("added entrie to table: " + newEntrie.table)
-                    tables.get(newEntrie.table).push(newEntrie.value)
-                }
-                else{
-                    // creates the table if it exists
-                    console.log("created new table: " + newEntrie.table)
-                    tables.set(newEntrie.table, [newEntrie.value])
-                }
+            else if (newEntrie.entries != undefined && newEntrie.entries != null && newEntrie.values == undefined) {
+
+                newEntrie.entries.forEach((entrie) => {
+                    if (typeof entrie.values[0] != typeof 1) {
+                        throw "error: only numbers are accepted"
+                        return
+                    }
+
+                    if (tables.has(entrie.table)) {
+                        // adds the new entrie to the table if it exists
+                        console.log("added entrie to table: " + entrie.table)
+                        tables.set(entrie.table, tables.get(entrie.table).concat(entrie.values))
+                    }
+                    else {
+                        // creates the table if it exists
+                        console.log("created new table: " + entrie.table)
+                        tables.set(entrie.table, entrie.values)
+                    }
+                })
 
                 updateGraph()
             }
-            else{
+            else {
                 throw "error, bad message"
             }
 
-            
+
         })
 
         socket.addEventListener("open", function () {
@@ -110,63 +118,64 @@
         })
     }
 
-    function showTable(tableName){
+    function showTable(tableName) {
         const visualize = tables.get(tableName)
         if (visualize != undefined && visualize != null && typeof visualize == typeof []) {
 
             // if they try to show the same table values twice throws error
-            if(currentGraphs.includes(tableName)){
+            if (currentGraphs.includes(tableName)) {
                 throw "error: cant visualize same graph twice"
             }
 
             // adds the new table to visualize to the current graphs
+            colors.set(tableName, "rgb(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ")")
             currentGraphs.push(tableName)
 
             //updates the graphs
             updateGraph()
         }
-        else  {
+        else {
             throw "error: table is empty or not array"
         }
     }
 
-    function updateGraph(){
+    function updateGraph() {
         // if there are no current graphs just return
-        
-            var longest = 0
 
-            newData = []
+        var longest = 0
 
-            // loops through all the graph names it wants to visualize
-            currentGraphs.forEach(element => {
-                console.log(element)
-                // adds the datas from the table that has the name with element to the new data
-                newData.push({label: element, data: tables.get(element), tension : 0, borderColor: "rgb("+Math.floor((Math.random() * 255))+", "+Math.floor((Math.random() * 255))+", "+Math.floor((Math.random() * 255))+")", fill: true})
+        newData = []
 
-                // finds the longest values
-                if(tables.get(element).length > longest){
-                    longest = tables.get(element).length
-                }
-            });
+        // loops through all the graph names it wants to visualize
+        currentGraphs.forEach(element => {
+            console.log(element)
+            // adds the datas from the table that has the name with element to the new data
+            newData.push({ label: element, data: tables.get(element), tension: 0, borderColor: colors.get(element), fill: true })
 
-            data.datasets = newData
+            // finds the longest values
+            if (tables.get(element).length > longest) {
+                longest = tables.get(element).length
+            }
+        });
 
-            res = makeLabels(longest)
-            console.log(res)
+        data.datasets = newData
 
-            data.labels = res
-        
+        res = makeLabels(longest)
+        console.log(res)
+
+        data.labels = res
+
 
         //updates the graph with no animation
         graph.update("none")
     }
 
     //makes the labels for a size of "size"
-    function makeLabels(size){
+    function makeLabels(size) {
         ret = []
         for (let index = 0; index < size; index++) {
-            ret.push(index);   
+            ret.push(index);
         }
         return ret
     }
-  </script>
+</script>
