@@ -19,6 +19,7 @@
 
 <script>
     var tables = null
+    var colors = null
 
     var socket = null
 
@@ -45,6 +46,7 @@
         graph = new Chart(document.getElementById("graph"), config)
         currentGraphs = []
         updateGraph()
+        colors = new Map()
         tables = new Map()
         // disables the connect buttons
         document.getElementById("url").disabled = true
@@ -126,6 +128,7 @@
             }
 
             // adds the new table to visualize to the current graphs
+            colors.set(tableName, "rgb(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ")")
             currentGraphs.push(tableName)
 
             //updates the graphs
@@ -147,7 +150,7 @@
         currentGraphs.forEach(element => {
             console.log(element)
             // adds the datas from the table that has the name with element to the new data
-            newData.push({ label: element, data: tables.get(element), tension: 0, borderColor: "rgb(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ")", fill: true })
+            newData.push({ label: element, data: tables.get(element), tension: 0, borderColor: colors.get(element), fill: true })
 
             // finds the longest values
             if (tables.get(element).length > longest) {
