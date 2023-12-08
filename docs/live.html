@@ -39,7 +39,7 @@
 
     var graph = new Chart(document.getElementById("graph"), config)
     var currentGraphs = []
-    
+
 
     function connect() {
         graph.destroy()
@@ -72,16 +72,8 @@
 
             var newEntrie = JSON.parse(event.data)
 
-            //if it is currently sending the already existing tables
-            if (newEntrie.entries == undefined && newEntrie.values != null && newEntrie.values != undefined) {
-                if (typeof newEntrie.values[0] != typeof 1) {
-                    throw "error: only number tables are accepted"
-                }
-                console.log("created table " + newEntrie.table)
-                tables.set(newEntrie.table, newEntrie.values)
-            }
             // if the thing being sent is real life data
-            else if (newEntrie.entries != undefined && newEntrie.entries != null && newEntrie.values == undefined) {
+            if (newEntrie.entries != undefined && newEntrie.entries != null && newEntrie.values == undefined) {
 
                 newEntrie.entries.forEach((entrie) => {
                     if (typeof entrie.values[0] != typeof 1) {
@@ -98,6 +90,13 @@
                         // creates the table if it exists
                         console.log("created new table: " + entrie.table)
                         tables.set(entrie.table, entrie.values)
+
+                        // adds the new table to visualize to the current graphs
+                        colors.set(entrie.table, "rgb(" + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ", " + Math.floor((Math.random() * 255)) + ")")
+                        currentGraphs.push(entrie.table)
+
+                        //updates the graphs
+                        updateGraph()
                     }
                 })
 
@@ -111,8 +110,10 @@
         })
 
         socket.addEventListener("open", function () {
-            document.getElementById("table").disabled = false
-            document.getElementById("show").disabled = false
+            // document.getElementById("table").disabled = false
+            // document.getElementById("show").disabled = false
+
+            // uncomment these to enable the show table button and text field
 
             console.log("Succesfully joined")
         })
