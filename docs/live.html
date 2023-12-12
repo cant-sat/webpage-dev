@@ -1,6 +1,6 @@
 <body>
 
-    <input type="text" name="Url" id="url" value="ws://localhost:12345">
+    <input type="text" name="Url" id="url" value="ws://server.cant.hu:443">
     <input type="button" onclick="connect()" value="Connect" id="connect">
     <br>
 
@@ -46,6 +46,12 @@
 
 
     function connect() {
+        if (location.protocol === 'https:') {
+            window.location.href = "http://cant.hu/live";
+        }
+
+
+
         graph.destroy()
         graph = new Chart(document.getElementById("graph"), config)
         currentGraphs = []
@@ -67,8 +73,12 @@
             document.getElementById("url").disabled = false
             document.getElementById("connect").disabled = false
 
-            document.getElementById("table").disabled = true
-            document.getElementById("show").disabled = true
+
+            document.getElementById("url").hidden = false
+            document.getElementById("connect").hidden = false
+
+            // document.getElementById("table").disabled = true
+            // document.getElementById("show").disabled = true
         })
 
         socket.addEventListener("message", function (event) {
@@ -118,6 +128,11 @@
             // document.getElementById("show").disabled = false
 
             // uncomment these to enable the show table button and text field
+
+            
+            // enables the connect buttons
+            document.getElementById("url").hidden = true
+            document.getElementById("connect").hidden = true
 
             console.log("Succesfully joined")
         })
