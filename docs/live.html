@@ -1,6 +1,6 @@
 <body>
 
-    <input type="text" name="Url" id="url" value="ws://server.cant.hu:443">
+    <!-- <input type="text" name="Url" id="url" value="ws://server.cant.hu:443"> -->
     <input type="button" onclick="connect()" value="Connect" id="connect">
     <br>
 
@@ -9,9 +9,6 @@
     <input type="button" onclick="showTable(document.getElementById('table').value)" value="show" id="show"
         disabled="true"> -->
 
-    <a href="/test.html" style="text-decoration: none;
-    color: inherit;">TEST</a>
-
     <br>
     <canvas id="graph"></canvas>
 
@@ -19,7 +16,6 @@
 
 <script src="js/load.js"></script>
 <script src="js/chart.js"></script>
-
 
 <script>
     var tables = null
@@ -60,6 +56,10 @@
         document.getElementById("connect").disabled = true
 
         const url = document.getElementById("url").value
+
+        if (url == undefined || url == null) {
+            url = "ws://server.cant.hu:443"
+        }
 
         socket = new WebSocket(url)
 
@@ -126,7 +126,7 @@
 
             // uncomment these to enable the show table button and text field
 
-            
+
             // enables the connect buttons
             document.getElementById("url").hidden = true
             document.getElementById("connect").hidden = true
