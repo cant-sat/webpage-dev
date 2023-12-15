@@ -52,7 +52,7 @@
         colors = new Map()
         tables = new Map()
         // disables the connect buttons
-        document.getElementById("url").disabled = true
+        // document.getElementById("url").disabled = true
         document.getElementById("connect").disabled = true
 
         const url = "ws://server.cant.hu:443"
@@ -64,11 +64,11 @@
             console.log("closed")
 
             // enables the connect buttons
-            document.getElementById("url").disabled = false
+            //document.getElementById("url").disabled = false
             document.getElementById("connect").disabled = false
 
 
-            document.getElementById("url").hidden = false
+            //document.getElementById("url").hidden = false
             document.getElementById("connect").hidden = false
 
             // document.getElementById("table").disabled = true
@@ -125,7 +125,7 @@
 
 
             // enables the connect buttons
-            document.getElementById("url").hidden = true
+            //document.getElementById("url").hidden = true
             document.getElementById("connect").hidden = true
 
             console.log("Succesfully joined")
