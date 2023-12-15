@@ -55,11 +55,8 @@
         document.getElementById("url").disabled = true
         document.getElementById("connect").disabled = true
 
-        const url = document.getElementById("url").value
+        const url = "ws://server.cant.hu:443"
 
-        if (url == undefined || url == null) {
-            url = "ws://server.cant.hu:443"
-        }
 
         socket = new WebSocket(url)
 
