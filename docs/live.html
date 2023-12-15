@@ -43,7 +43,9 @@
 
     function connect() {
 
-
+        if (location.protocol !== 'http:') {
+            location.replace(`http:${location.href.substring(location.protocol.length)}`);
+        }
 
         graph.destroy()
         graph = new Chart(document.getElementById("graph"), config)
