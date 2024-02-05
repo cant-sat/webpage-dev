@@ -1,0 +1,29 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik Doodle Shadow', system-ui;
+    color: white;
+
+    position: fixed; /* make sure it stays put so we can see it! */
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    animation: size 1.001s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+}
+
+@keyframes size{
+    0%{
+        font-size: 300%;
+    }
+    100% {
+        font-size: 0;
+    }
+}
+
+body{
+    min-height: 500vh;
+
+    background-color: black;
+}

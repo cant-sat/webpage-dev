@@ -1,9 +1,38 @@
-</body>
-<div>
-    A cant cansat csapat weboldala
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANT</title>
+
+
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Rubik+Doodle+Shadow&display=swap"
+        rel="stylesheet"> <!--font-family: 'Rubik Doodle Shadow', system-ui; -->
+</head>
+
 <body>
-    
+    <h1>CAN'T</h1>
+</body>
 
 
-<script src="js/load.js"></script>
+<script>
+    window.addEventListener(
+        "scroll",
+        () => {
+            document.body.style.setProperty(
+                "--scroll",
+                Math.min(window.pageYOffset / (document.body.offsetHeight - window.innerHeight), 1)
+            );
+        },
+        false
+    );
+</script>
+</html>
+
+
