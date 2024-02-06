@@ -8,22 +8,43 @@ h1 {
     width: 100%;
     text-align: center;
 
-    animation: size 1.001s linear infinite;
+    animation: sizeMainTitle 1.001s ease-in infinite;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);
 }
 
-@keyframes size{
+@keyframes sizeMainTitle{
     0%{
-        font-size: 300%;
+        top: 50%;
+        transform: translateY(-100%);
+        font-size: 30vh;
+    }
+    25% {
+        top: 0%;
+        transform: translateY(0);
+        font-size: 0;
     }
     100% {
+        top: 0%;
+        transform: translateY(0);
         font-size: 0;
     }
 }
 
-body{
-    min-height: 500vh;
+@keyframes bgColor{
+    0%{
+        background-image: linear-gradient(0deg, rgb(228, 96, 35), rgb(69, 69, 221));
+    }
+    100% {
+        background-image: linear-gradient(360deg, rgb(228, 96, 35), rgb(69, 69, 221));
+    }
+}
 
-    background-color: black;
+body{
+    min-height: 1000vh;
+
+    
+    animation: bgColor 1.001s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
 }
