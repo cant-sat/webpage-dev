@@ -13,6 +13,7 @@ h1 {
     animation-delay: calc(var(--scroll) * -1s);
 }
 
+
 @keyframes sizeMainTitle{
     0%{
         top: 50%;
@@ -30,6 +31,39 @@ h1 {
         font-size: 0;
     }
 }
+
+#wrapper {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik Doodle Shadow', system-ui;
+    color: white;
+
+    left: 25%;
+    position: fixed;
+
+    animation: sizeAbout 1.001s ease-in infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+}
+
+@keyframes sizeAbout{
+    0%{
+        top: -100%;
+        transform: translateY(0) scale(0);
+    }
+    25% {
+        top: 0%;
+        transform: translateY(0) scale(1);
+    }
+    50%{
+        top: 50%;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        top: 200%;
+        transform: translateY(0) scale(0);
+    }
+}
+
 
 @keyframes bgColor{
     0%{

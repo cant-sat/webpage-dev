@@ -49,7 +49,7 @@
 @media (any-pointer: fine){
   .card-container:hover > *:not(:hover) {
     transform: scale(0.96);
-    filter: blur(10px);
+    filter: blur(3px);
   }
 }
 
