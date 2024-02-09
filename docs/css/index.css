@@ -1,4 +1,5 @@
-h1 {
+h {
+
     font-family: 'Roboto', sans-serif;
     font-family: 'Rubik Doodle Shadow', system-ui;
     color: white;
@@ -17,20 +18,28 @@ h1 {
 @keyframes sizeMainTitle{
     0%{
         top: 50%;
-        transform: translateY(-100%);
-        font-size: 30vh;
+        transform: translateY(-50%);
+        font-size: 25vw;
+
+
     }
     20% {
         top: 0%;
-        transform: translateY(-50%);
-        font-size: 5vh;
-        cursor:pointer;
+        transform: translateY(0%);
+        font-size: 5vw;
+
+
+    }
+    25%{
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 5vw;
+
     }
     100% {
         top: 0%;
-        transform: translateY(-50%);
-        font-size: 5vh;
-        cursor:pointer;
+        transform: translateY(0%);
+        font-size: 5vw;
     }
 }
 
