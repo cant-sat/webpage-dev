@@ -22,13 +22,15 @@ h1 {
     }
     20% {
         top: 0%;
-        transform: translateY(0);
-        font-size: 0;
+        transform: translateY(-50%);
+        font-size: 5vh;
+        cursor:pointer;
     }
     100% {
         top: 0%;
-        transform: translateY(0);
-        font-size: 0;
+        transform: translateY(-50%);
+        font-size: 5vh;
+        cursor:pointer;
     }
 }
 
