@@ -1,10 +1,40 @@
+/* basic stuff */
+
+body {
+    min-height: 1000vh;
+
+
+
+    animation: bgColor 1.001s linear infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+
+    font-family: "Rubik", sans-serif;
+}
+
+/* hide scrollbar but allow scrolling */
+body {
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+/**/
+
 h {
 
-    font-family: 'Roboto', sans-serif;
     font-family: 'Rubik Doodle Shadow', system-ui;
     color: white;
 
-    position: fixed; /* make sure it stays put so we can see it! */
+    position: fixed;
+    /* make sure it stays put so we can see it! */
     display: block;
     width: 100%;
     text-align: center;
@@ -14,53 +44,23 @@ h {
     animation-delay: calc(var(--scroll) * -1s);
 }
 
+/* left and right button */
 
-@keyframes sizeMainTitle{
-    0%{
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 25vw;
-
-
-    }
-    20% {
-        top: 0%;
-        transform: translateY(0%);
-        font-size: 5vw;
-
-
-    }
-    25%{
-        top: 0%;
-        transform: translateY(0%);
-        font-size: 5vw;
-
-    }
-    100% {
-        top: 0%;
-        transform: translateY(0%);
-        font-size: 5vw;
-    }
-}
-
-
-@keyframes bgColor{
-    0%{
-        background-image: linear-gradient(0deg, rgb(228, 96, 35), rgb(69, 69, 221));
-    }
-    100% {
-        background-image: linear-gradient(360deg, rgb(228, 96, 35), rgb(69, 69, 221));
-    }
-}
-
-body{
-    min-height: 1000vh;
-
-    
-    animation: bgColor 1.001s linear infinite;
+span#buttons :first-child {
+    animation: sizeLeftButton 1.001s ease-in infinite;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);
 }
+
+span#buttons :last-child {
+    animation: sizeRightButton 1.001s ease-in infinite;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+}
+
+
+
+/* --- define classes --- */
 
 .unselectable {
     -webkit-touch-callout: none;
@@ -69,4 +69,138 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.otherPageButton {
+    text-decoration: none;
+    color: inherit;
+
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik Doodle Shadow', system-ui;
+    color: white;
+
+    position: fixed;
+    /* make sure it stays put so we can see it! */
+}
+
+.otherPageButton:hover {}
+
+
+.hasBackground {
+    background-color: black;
+    border-radius: 10px 10px 10px 10px;
+    padding: 1vh 20vw;
+}
+
+/* --- define animations --- */
+
+/* changes the color of the background as you scroll */
+@keyframes bgColor {
+    0% {
+        background-image: linear-gradient(0deg, rgb(228, 96, 35), rgb(69, 69, 221));
+    }
+
+    100% {
+        background-image: linear-gradient(360deg, rgb(228, 96, 35), rgb(69, 69, 221));
+    }
+}
+
+/* makes the main title move to the top */
+@keyframes sizeMainTitle {
+    0% {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 25vw;
+
+
+    }
+
+    20% {
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 5vw;
+
+    }
+
+    25% {
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 5vw;
+
+    }
+
+    100% {
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 5vw;
+    }
+}
+
+/* makes the left and right button appear */
+@keyframes sizeLeftButton {
+    0% {
+        left: 50%;
+        top: 0;
+        transform: translateY(0%);
+        font-size: 4vw;
+
+
+    }
+
+    20% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 4vw;
+    }
+
+    25% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%) translateX(-100%) translateX(-17vw);
+        font-size: 4vw;
+
+    }
+
+    100% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%) translateX(-100%) translateX(-17vw);
+        font-size: 4vw;
+    }
+}
+
+@keyframes sizeRightButton {
+    0% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0);
+        font-size: 4vw;
+
+
+    }
+
+    20% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%);
+        font-size: 4vw;
+
+
+    }
+
+    25% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%) translateX(17vw);
+        font-size: 4vw;
+
+    }
+
+    100% {
+        left: 50%;
+        top: 0%;
+        transform: translateY(0%) translateX(17vw);
+        font-size: 4vw;
+    }
 }

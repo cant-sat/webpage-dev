@@ -24,7 +24,12 @@
 <script src="js/load.js"></script>
 
 <script> 
+    let i = 0
     function pressed(){
-        document.getElementById("scream").play()
+        i++
+        if(i > 10) {
+            document.getElementById("scream").play()
+        }
+
     }
 </script>
